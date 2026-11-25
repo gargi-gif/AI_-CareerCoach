@@ -90,6 +90,10 @@ with tab1:
                     # 1. Save and extract text
                     file_path = save_uploaded_file(uploaded_file)
                     resume_text = extract_text(file_path)
+
+                    st.write("DEBUG - API Key Loaded:", bool(os.environ.get("OPENROUTER_API_KEY")))
+                    st.write("DEBUG - Extracted Text Length:", len(resume_text) if resume_text else 0)
+                    st.write("DEBUG - First 150 chars:", (resume_text or "")[:150])
                     
                     # 2. Prepare the base state with the extracted text
                     state = get_base_state()
