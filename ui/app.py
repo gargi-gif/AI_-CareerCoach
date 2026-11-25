@@ -18,6 +18,9 @@ root_dir = os.path.dirname(current_dir)
 if root_dir not in sys.path:
     sys.path.insert(0, root_dir)
 
+for key in ["OPENROUTER_API_KEY", "JSEARCH_API_KEY"]:
+    if key in st.secrets and not os.environ.get(key):
+        os.environ[key] = st.secrets[key]
 
 try:
     from graph.graph import graph
