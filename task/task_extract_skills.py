@@ -132,7 +132,7 @@ Resume text:
     try:
         # Send resume text to LLM and get structured response
         response = model.chat.completions.create(
-            model="openai/gpt-oss-20b",
+            model="openai/gpt-oss-20b:free",
             messages=[
                 {
                     "role": "user",
@@ -142,9 +142,8 @@ Resume text:
         )
 
         # Validate and clean LLM output before returning
-        resume_data = clean_json(
-            response.choices[0].message.content
-        )
+        content = response.choices[0].message.content or ""
+        resume_data = clean_json(content)
 
         return resume_data
 
