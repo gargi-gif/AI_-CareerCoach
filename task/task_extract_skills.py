@@ -149,4 +149,4 @@ Resume text:
 
     except Exception as e:
         print(f"Error extracting resume information: {e}")
-        return {}
+        return {"_debug_error": str(e)}
